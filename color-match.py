@@ -1,9 +1,13 @@
 import xml.etree.ElementTree as ET
 import colour
 
+# Constants
+COLOUR_LIBRARY_PATH = 'colour-library'
+COLOURS_LIST = 'colors.txt'
+
 
 def get_colour_val(colour_name: str, colour_obj: ET.Element) -> int:
-    return int(colour_obj.find(colour_name).text)
+    return float(colour_obj.find(colour_name).text)/255
 
 
 def parse_acb_colours(acb_file: str):
@@ -14,7 +18,7 @@ def parse_acb_colours(acb_file: str):
 
     for page in root.findall('colorPage'):
         for current_col in page.findall('colorEntry'):
-            name: str = current_col.find('colorName')
+            name: str = current_col.find('colorName').text
             col_obj = current_col.find('RGB8')
 
             colour_val = colour.Color()
@@ -32,4 +36,4 @@ def parse_acb_colours(acb_file: str):
 #     with open(filename) as f:
 #         return f.read()
 
-print(parse_acb_colours("color-library\Resene_The_Range_2000.acb"))
+print(parse_acb_colours("colour-library\Resene_The_Range_2000.acb"))
