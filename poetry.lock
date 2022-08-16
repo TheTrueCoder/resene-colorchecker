@@ -1,0 +1,18 @@
+[[package]]
+name = "colour"
+version = "0.1.5"
+description = "converts and manipulates various color representation (HSL, RVB, web, X11, ...)"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+test = ["nose"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "005d46f3937f383aed8dd76b4fa559740de4efd49cd1557a0ca3b3b86424180a"
+
+[metadata.files]
+colour = []

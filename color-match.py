@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import colour
+import os
 
 # Constants
 COLOUR_LIBRARY_PATH = 'colour-library'
@@ -10,7 +11,7 @@ def get_colour_val(colour_name: str, colour_obj: ET.Element) -> int:
     return float(colour_obj.find(colour_name).text)/255
 
 
-def parse_acb_colours(acb_file: str):
+def parse_acb_colours(acb_file: str) -> list[dict]:
     root = ET.parse(acb_file).getroot()
 
     colours = []
@@ -32,8 +33,11 @@ def parse_acb_colours(acb_file: str):
     return colours
 
 
-# def load_colour_library(filename: str):
-#     with open(filename) as f:
-#         return f.read()
+def load_colour_library(folder: str):
+    colour_lib = []
+    for filename in os.listdir(folder):
+        colour_lib.append(parse_acb_colours(filename)[:])
 
 print(parse_acb_colours("colour-library\Resene_The_Range_2000.acb"))
+
+
