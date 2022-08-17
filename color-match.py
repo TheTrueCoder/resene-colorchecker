@@ -36,8 +36,9 @@ def parse_acb_colours(acb_file: str) -> list[dict]:
 def load_colour_library(folder: str):
     colour_lib = []
     for filename in os.listdir(folder):
-        colour_lib.append(parse_acb_colours(filename)[:])
+        colour_lib.append(parse_acb_colours(os.path.join(folder, filename))[:])
+    return colour_lib
 
-print(parse_acb_colours("colour-library\Resene_The_Range_2000.acb"))
-
+# print(parse_acb_colours("colour-library\Resene_The_Range_2000.acb"))
+print(load_colour_library('colour-library'))
 
