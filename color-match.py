@@ -10,6 +10,9 @@ COLOURS_LIST = 'colors.txt'
 def get_colour_val(colour_name: str, colour_obj: ET.Element) -> int:
     return float(colour_obj.find(colour_name).text)/255
 
+def RGB_to_Lab(rgb_colour: list):
+    xyz_colour = colour
+
 
 def parse_acb_colours(acb_file: str) -> list[dict]:
     root = ET.parse(acb_file).getroot()
@@ -41,4 +44,3 @@ def load_colour_library(folder: str):
 
 # print(parse_acb_colours("colour-library\Resene_The_Range_2000.acb"))
 print(load_colour_library('colour-library'))
-
